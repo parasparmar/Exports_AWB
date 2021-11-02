@@ -7,7 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
   name = 'Paras';
-  url: string = 'AWB.html';
+  url: string = 'https://parasparmar.com';
   urlSafe: SafeResourceUrl;
 
   constructor(public sanitizer: DomSanitizer) {}

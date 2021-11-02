@@ -1,0 +1,2706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWB</title>
+    <style media="all">
+        * {box-sizing: border-box !important;}
+        body * {
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            -ms-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+        }
+
+        body {
+            font-family: arial;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            font-size: 0.088in;
+            line-height: 1.15;
+            display: flex;
+            align-items: center;
+        }
+
+        .awb-page {
+            width: 8.3in;
+            height: 11.68in;
+            margin: auto;
+            border: 0.15pt solid grey;
+        }
+
+        .awb-box {
+            width: 7.4in;
+            /* height: 10.42in; */
+            height: 10.08668in;
+            /* margin: auto auto auto 0.8in; */
+            /* margin: 0 0 0 0.8in; */
+            /* border: 0.15pt solid #000; */
+        }
+
+        .awb-margin {
+            width: 7.4in;
+            margin: auto;
+        }
+
+        .awb-title-box {
+            width: 7.4in;
+            height: 0.3in;
+            /* margin: 0.08333in auto auto 0.8in; */
+            /* margin: 0.8in 0 0 0.8in; */
+            display: flex;
+        }
+
+        .awb-no-place {
+            width: 3.6in;
+            height: 0.3in;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .awb-perfix { 
+            width: 0.35in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in;
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold;
+            font-family: 'Courier New';
+        }
+
+        .awb-place { 
+            width: 0.35in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in;
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+        }
+
+        .awb-number { 
+            width: 0.85in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in; 
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+        }
+
+        .awb-no {
+            width: 3.8in;
+            height: 0.225in;
+            text-align: right;
+        }
+
+        .awb-no-tr {
+            width: 1.65in;
+            display: inline-block; 
+            text-align: center; 
+            height: 0.3in; 
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+            padding-right: 0.25in;
+        }
+
+
+        
+        .main-row {
+            display: flex;
+
+        }
+
+        .main-row-b {
+            display: block;
+        }
+
+        .handlinginfo-box {
+            height: 0.6666in;
+            position: relative;
+        }
+
+        .handlinginfo {
+            height: 0.1666in;
+            padding: 0.03in;
+        }
+
+        .handlinginfo-text {
+            height: 0.5in;
+            display: flex; 
+            align-items: flex-end;
+            justify-content: space-between; 
+            height: 0.515in;
+        }
+
+        .handlinginfo-text .box-1 {
+            width: 6.2in;
+            padding: 0.03in;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 0.515in;
+        }
+
+        .sci {
+            /* position: absolute; 
+            right: 0; 
+            bottom: 0;  */
+            width: 1.2in !important; 
+            height: 0.33332in;
+            padding: 0.03in;
+            text-align: center;
+        }
+
+        .commodity-goods-info-table {
+            display: flex;
+            height: 2.6665in;
+            text-align: center;
+            font-size: 0.08in;
+        }
+
+        .cgitbl-row {
+            height: 0.33332in;
+            padding: 0.03in 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cgitbl-row span {
+            display: block !important;
+            width: 100%;
+        }
+
+        .cgitbl-row-1 {
+            height: o.33332in;
+        }
+
+        .cgitbl-row-1 .rt-cls {
+            text-align: left;
+            height: 0.14in;
+            padding: 0.03in 0 0 0;
+        }
+
+        .cgitbl-row-1 .comm-itm {
+            height: 0.18999in;
+            line-height: 1.1;
+            padding-top: 0.015in;
+        }
+
+        .cgitbl-body {
+            height: 2.3332in;
+            padding: 0.03in 0;
+        }
+
+        .cgitbl-body-1 {
+            height: 2in;
+            padding: 0.03in 0;
+        }
+
+        .cgitbl-body-2 {
+            height: 2in;
+            padding: 0.03in;
+            text-align: left;
+        }
+
+        .Pieces-RCP {
+            width: 0.4in;
+            height: 2.6665in;
+        }
+
+        .gross-wgt {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .kg-lb {
+            width: 0.1in;
+            height: 2.6665in;
+            font-size: 0.070in;
+            word-break: break-all;
+        }
+
+        .kg-lb .cgitbl-row {
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .kg-lb .cgitbl-row span:first-child {
+            margin-bottom: 0.04in;
+        }
+
+        .grey-gap {
+            width: 0.1in;
+            height: 2.6665in;
+            background-color: grey;
+        }
+
+        .rate-class {
+            width: 0.1in;
+            height: 2.6665in;
+        }
+
+        .commodity-itemno {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .chargeable-wgt {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .rate-per-charge {
+            width: 0.8in;
+            height: 2.6665in;
+        }
+
+        .total {
+            width: 1.2in;
+            height: 2.6665in;
+        }
+
+        .nature-qty-goods {
+            width: 2.2in;
+            height: 2.6665in;
+        }
+
+        .ta-c {
+            text-align: center !important;
+        }
+
+        .ta-l {
+            text-align: left !important;
+        }
+
+        .ta-r {
+            text-align: right !important;
+        }
+
+        .f-mono {
+            font-family: 'Courier New';
+        }
+
+        .bdr-bl {
+            border-bottom: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-tl {
+            border-top: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-rl {
+            border-right: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-tb {
+            border-top: .25pt solid #000;
+            border-bottom: .25pt solid #000;
+        }
+
+        .bdr-t {
+            border-top: .25pt solid #000;
+        }
+
+        .bdr-r {
+            border-right: .25pt solid #000;
+        }
+
+        .bdr-b {
+            border-bottom: .25pt solid #000;
+        }
+
+        .bdr-l {
+            border-left: .25pt solid #000;
+        }
+
+        span, strong {
+            display: inline-block;
+            /* border: .25pt solid gray; */
+        }
+
+        .section-heading {
+            font-size: 0.090in;
+            font-family: arial;
+            margin-bottom: 0.03in;
+        }
+
+        .section-body {
+            font-size: 0.115in;
+            line-height: 1.25;
+            font-family: 'Courier New';
+        }
+
+        .agreed-txt {
+            font-size: 0.0875in;
+            padding: 0.03in;
+            line-height: 1.2;
+            font-family: arial;
+            text-align: justify;
+        }
+
+        .common-p {
+            padding: 0.03in;
+        }
+
+        .shipper-box {
+            width: 3.6in;
+            height: 1in;
+        }
+
+        .shipper-box .inner-r1 {
+            display: flex;
+        }
+
+        .shipper-box .inner-r1 .col-l {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .shipper-box .inner-r1 .col-r {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .shipper-box .inner-r2 {
+            width: 3.6in;
+            height: 0.48in;
+        }
+
+        .issuedby-box {
+            width: 3.8in;
+            height: 1in;
+        }
+
+        .issuedby-box .inner-r1 {
+            width: 3.8in;
+            height: 0.18in;
+        }
+
+        .issuedby-box .inner-r2 {
+            width: 3.8in;
+            height: 0.54in;
+        }
+
+        .issuer-info {
+            display: flex;
+        }
+
+        .issuer-title {
+            width: 1in;
+            height: 0.74997in;
+            padding: 0.03in;
+        }
+
+        .awb-awb {
+            font-size: 0.140in; 
+            font-family: arial;
+            padding: 0 0 0.075in 0;
+        }
+
+        .awb-awb-btm {
+            width: 3.18in;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .issuer-details {
+            width: 3.0in;
+            height: 0.74997in;
+            padding: 0.03in;
+        }
+
+        .bill-copy-info {
+            height: 0.24999in;
+            line-height: 0.18in;
+            padding: 0.03in;
+        }
+
+
+        .consignee-box {
+            width: 3.6in;
+            height: 1in;
+        }
+
+        .consignee-box .inner-r1 {
+            display: flex;
+        }
+
+        .consignee-box .inner-r1 .col-l {
+            width: 1.8in;
+            height: 0.3332in;
+            padding: 0.03in;
+        }
+
+        .consignee-box .inner-r1 .col-r {
+            width: 1.8in;
+            height: 0.3332in;
+            padding: 0.03in;
+        }
+
+        .consignee-box .inner-r2 {
+            width: 3.6in;
+            height: 0.48in;
+            padding: 0.03in;
+        }
+
+        .agreed-box {
+            width: 3.8in;
+            height: 1in;
+        }
+
+        
+
+        .carrieragent-box {
+            width: 3.6in;
+            height: 1in;
+        }
+        
+        .carrieragent-box .inner-r1 {
+            height: 0.66664in;
+            padding: 0.03in;
+        }
+
+        .carrieragent-box .inner-r2 {
+            display: flex;
+        }
+
+        .carrieragent-box .inner-r2 .col-l {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .carrieragent-box .inner-r2 .col-r {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .accountinfo-box {
+            width: 3.8in;
+            height: 0.72in;
+        }
+
+        .accountinfo-box .inner-r1{
+            padding: 0.03in;
+        }
+
+
+        .airportinfo-box {
+            width: 3.6in;
+        }
+
+        .routing-airport {
+            display: flex;
+        }
+
+        .routing-airport .byfirstcarrier {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+            position: relative;
+        }
+        
+        .byfirstcarrier-title {
+            position: absolute;
+            width: 0.95in;
+            text-align: center;
+            right: 0.12in;
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            margin-top: -0.03in;
+        }
+
+        .byfirstcarrier-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .byfirstcarrier-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+
+        .routing-airport .to {
+            width: 0.4in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .routing-airport .by {
+            width: 0.3in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .destination-date {
+            display: flex;
+        }
+
+        .destination-airport {
+            width: 1.8in;
+            padding: 0.03in;
+        }
+
+        .departure-airport {
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .flight-date {
+            display: flex;
+            position: relative;
+            height: 0.33332in;
+            align-items: flex-end;
+        }
+
+        .flight-date-title {
+            position: absolute; 
+            border-bottom: 0.15pt solid #000; 
+            left: calc(25%);
+            width: 0.9in;
+            top: 0;
+            text-align: center;
+            padding: 0.02in 0 0.01in 0;
+        }
+
+        .flight-date-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .flight-date-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .flight-info {
+            width: 0.9in;
+            height: 0.205in;
+            padding: 0.03in;
+        }
+
+        .date-info {
+            width: 0.9in;
+            height: 0.205in;
+            padding: 0.03in;
+        }
+
+
+        .referenceinfo-box {
+            width: 3.8in;
+        }
+
+        .refnumber-optshipping-info {
+            display: flex;
+        }
+
+        .referece-number {
+            width: 1.4in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .optshipping-info-box {
+            width: 2.4in; 
+            position: relative; 
+            height: 0.33332in;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .optshipping-info-title {
+            display: inline-block;
+            position: absolute;
+            left: -0.1in;
+            top: -0.3pt;
+            width: 1.4in;
+            text-align: center;
+            border-bottom: 0.15pt solid #000;
+            border-top: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+        }
+
+        .optshipping-info-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .optshipping-info-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .optshipping-info {
+            width: 1.2in;
+            height: 0.20in;
+            padding: 0.03in 0.03in 0 0.03in;
+        }
+
+        .insurance {
+            display: flex;
+        }
+
+        .insurance-amt {
+            width: 1.1in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .insurance-txt {
+            width: 2.7in;
+            height: 0.33332in;
+            padding: 0.03in 0.050in 0.03in 0.03in;
+        }
+
+        .insurance-msg {
+            font-size: 0.085in;
+            text-align: justify;
+        }
+
+
+        .currency-carriage-customs {
+            display: flex;
+        }
+
+        .currency-chgs {
+            display: flex;
+        }
+
+        .currency-chgs .currency {
+            width: 0.4in;
+            height: 0.33332in;
+            padding: 0.01in 0.02in;
+            text-align: center;
+        }
+
+        .currency-chgs .chgs-code {
+            width: 0.2in;
+            height: 0.33332in;
+            padding: 0.03in 0;
+        }
+
+        .currency-chgs .chgs-code span {
+            font-size: 0.065in;
+            line-height: 1;
+            display: block;
+            text-align: center;
+        }
+        .currency-chgs .chgs-code span.f-mono {
+            font-size: 0.125in !important;
+        }
+
+        .currency-chgs .wt-val {
+            width: 0.4in;
+            height: 0.33332in;
+
+        }
+
+        .wt-val-title, .other-title {
+            height: 0.115in;
+            text-align: center;
+            padding: 0.018in;
+        }
+
+        .currency-chgs .other {
+            width: 0.4in;
+            height: 0.33332in;
+
+        }
+
+        .wt-val-r, .other-r {
+            display: flex;
+
+        }
+
+        .wt-val-r .ppd, .other-r .ppd, .wt-val-r .coll, .other-r .coll {
+            width: 0.2in;
+            font-size: 0.068in;
+            height: 0.218in;
+            padding: 0.03in 0;
+            text-align: center;
+        }
+
+        
+        .carriage {
+            width: 1.2in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .customs {
+            width: 1.2in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+
+
+        .charges-table {
+            width: 2.8in;
+            /* height: 3in; */
+            height: 2.66656in;
+        }
+
+        .prepaid-weightchgs-collect {
+            height: 0.33332in;
+        }
+        
+        .valuation-chgs {
+            height: 0.33332in;
+        }
+
+        .tax {
+            height: 0.33332in;
+        }
+
+        .total-other-due-agent {
+            height: 0.33332in;
+        }
+
+        .total-other-due-carrier {
+            height: 0.33332in;
+        }
+
+        .blank-space {
+            height: 0.33332in;
+            display: flex;
+            background-color: grey;
+        }
+        .blank-space div {
+            width: 1.4in;
+        }
+        .total-prepaied-collect {
+            height: 0.33332in;
+            display: flex;
+        }
+
+        .currency-rate-cc-charge {
+            height: 0.33332in;
+            display: flex;
+        }
+        
+        .carrieruse-chgs-desti {
+            height: 0.33332in;
+            display: flex;
+        }
+
+        .carrier-use {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .carrier-use, .chgs-desti {
+            width: 1.4in;
+        }
+
+        .cc-charges {
+            width: 1.4in;
+        }
+
+        .chgs-desti {
+            width: 1.4in;
+        }
+
+        .total-prepaid {
+            width: 1.4in;
+        }
+
+        .total-collect {
+            width: 1.4in;
+        }
+
+        .currency-rate {
+            width: 1.4in;
+        }
+
+        .head-title {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .head-title span {
+            position: relative;
+            display: inline-block; 
+            width: 1.4in;
+            text-align: center; 
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            margin: 0 0.1in;
+        }
+
+        .head-title span::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .head-title span::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .val-txt {
+            display: flex;
+            justify-content: center;
+        }
+        .val-txt div {
+            height: 0.210in;
+            text-align: center;
+            flex-grow: 1;
+            padding: 0.03in;
+            width: 50%;
+        }
+
+
+
+        .other-chgs-signature-footer {
+            width: 4.6in;
+            /* height: 3in; */
+            height: 2.66656in;
+        }
+
+        .othercharges-info {
+            height: 1in;
+            padding: 0.03in;
+        }
+
+        .shipper-signature {
+            height: 1in;
+            padding: 0.03in;
+        }
+
+        .shipper-signature-title {
+            padding: 0.03in;
+            text-align: center;
+            height: 0.2in;
+            border-top: 0.15pt dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .shipper-signature-txet {
+            height: .8in;
+        }
+
+        .signature-box {
+            height: 0.5in;
+            text-align: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .date-place-sign-issuer {
+            height: 0.66664in;
+            padding: 0.03in;
+        }
+
+        .date-place-sign-box {
+            height: 0.45in;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        .total-collect-chgs {
+            width: 1.4in;
+            height: 0.33332in;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .total-collect-chgs-body {
+            display: block;
+            height: 0.20in;
+            flex-grow: 1;
+            padding: 0.03in;
+        }
+
+        .total-collect-chgs-title {
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            left: calc(25%);
+            top: 0;
+        }
+
+        .total-collect-chgs-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .total-collect-chgs-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .total-chgs-footer {
+            height: 0.33332in;
+            display: flex;
+        }
+
+
+
+
+        /* {.8in} */
+
+
+
+        @media print { 
+            * {box-sizing: border-box !important;}
+        body * {
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            -ms-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+        }
+
+        body {
+            font-family: arial;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            font-size: 0.088in !important;
+            line-height: 1.15;
+            line-height: 0.1012in;
+            display: flex;
+            align-items: center;
+        }
+
+        .f-8 {
+            font-size: 8px !important;
+        }
+
+        .awb-page {
+            width: 8.3in;
+            height: 11.68in;
+            margin: auto;
+            border: 0.15pt solid grey;
+        }
+
+        .awb-box {
+            width: 7.4in;
+            /* height: 10.42in; */
+            height: 10.08668in;
+            /* margin: auto auto auto 0.8in; */
+            /* margin: 0 0 0 0.8in; */
+            /* border: 0.15pt solid #000; */
+        }
+
+        .awb-margin {
+            width: 7.4in;
+            margin: auto;
+        }
+
+        .awb-title-box {
+            width: 7.4in;
+            height: 0.3in;
+            /* margin: 0.08333in auto auto 0.8in; */
+            /* margin: 0.8in 0 0 0.8in; */
+            display: flex;
+        }
+
+        .awb-no-place {
+            width: 3.6in;
+            height: 0.3in;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .awb-perfix { 
+            width: 0.35in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in;
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold;
+            font-family: 'Courier New';
+        }
+
+        .awb-place { 
+            width: 0.35in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in;
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+        }
+
+        .awb-number { 
+            width: 0.85in; 
+            display: inline-block; 
+            text-align: center; 
+            height: 0.225in; 
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+        }
+
+        .awb-no {
+            width: 3.8in;
+            height: 0.225in;
+            text-align: right;
+        }
+
+        .awb-no-tr {
+            width: 1.65in;
+            display: inline-block; 
+            text-align: center; 
+            height: 0.3in; 
+            line-height: 0.3in; 
+            font-size: 0.15in;
+            font-weight: bold; 
+            font-family: 'Courier New';
+            padding-right: 0.25in;
+        }
+
+
+        
+        .main-row {
+            display: flex;
+
+        }
+
+        .main-row-b {
+            display: block;
+        }
+
+        .handlinginfo-box {
+            height: 0.6666in;
+            position: relative;
+        }
+
+        .handlinginfo {
+            height: 0.1666in;
+            padding: 0.03in;
+        }
+
+        .handlinginfo-text {
+            height: 0.5in;
+            display: flex; 
+            align-items: flex-end;
+            justify-content: space-between; 
+            height: 0.515in;
+        }
+
+        .handlinginfo-text .box-1 {
+            width: 6.2in;
+            padding: 0.03in;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 0.515in;
+        }
+
+        .sci {
+            /* position: absolute; 
+            right: 0; 
+            bottom: 0;  */
+            width: 1.2in !important; 
+            height: 0.33332in;
+            padding: 0.03in;
+            text-align: center;
+        }
+
+        .commodity-goods-info-table {
+            display: flex;
+            height: 2.6665in;
+            text-align: center;
+            font-size: 0.08in;
+        }
+
+        .cgitbl-row {
+            height: 0.33332in;
+            padding: 0.03in 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cgitbl-row span {
+            display: block !important;
+            width: 100%;
+        }
+
+        .cgitbl-row-1 {
+            height: o.33332in;
+        }
+
+        .cgitbl-row-1 .rt-cls {
+            text-align: left;
+            height: 0.14in;
+            padding: 0.03in 0 0 0;
+        }
+
+        .cgitbl-row-1 .comm-itm {
+            height: 0.18999in;
+            line-height: 1.1;
+            padding-top: 0.015in;
+        }
+
+        .cgitbl-body {
+            height: 2.3332in;
+            padding: 0.03in 0;
+        }
+
+        .cgitbl-body-1 {
+            height: 2in;
+            padding: 0.03in 0;
+        }
+
+        .cgitbl-body-2 {
+            height: 2in;
+            padding: 0.03in;
+            text-align: left;
+        }
+
+        .Pieces-RCP {
+            width: 0.4in;
+            height: 2.6665in;
+        }
+
+        .gross-wgt {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .kg-lb {
+            width: 0.1in;
+            height: 2.6665in;
+            font-size: 0.070in;
+            word-break: break-all;
+        }
+
+        .kg-lb .cgitbl-row {
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .kg-lb .cgitbl-row span:first-child {
+            margin-bottom: 0.04in;
+        }
+
+        .grey-gap {
+            width: 0.1in;
+            height: 2.6665in;
+            background-color: grey;
+        }
+
+        .rate-class {
+            width: 0.1in;
+            height: 2.6665in;
+        }
+
+        .commodity-itemno {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .chargeable-wgt {
+            width: 0.7in;
+            height: 2.6665in;
+        }
+
+        .rate-per-charge {
+            width: 0.8in;
+            height: 2.6665in;
+        }
+
+        .total {
+            width: 1.2in;
+            height: 2.6665in;
+        }
+
+        .nature-qty-goods {
+            width: 2.2in;
+            height: 2.6665in;
+        }
+
+        .ta-c {
+            text-align: center !important;
+        }
+
+        .ta-l {
+            text-align: left !important;
+        }
+
+        .ta-r {
+            text-align: right !important;
+        }
+
+        .f-mono {
+            font-family: 'Courier New';
+        }
+
+        .bdr-bl {
+            border-bottom: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-tl {
+            border-top: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-rl {
+            border-right: .25pt solid #000;
+            border-left: .25pt solid #000;
+        }
+
+        .bdr-tb {
+            border-top: .25pt solid #000;
+            border-bottom: .25pt solid #000;
+        }
+
+        .bdr-t {
+            border-top: .25pt solid #000;
+        }
+
+        .bdr-r {
+            border-right: .25pt solid #000;
+        }
+
+        .bdr-b {
+            border-bottom: .25pt solid #000;
+        }
+
+        .bdr-l {
+            border-left: .25pt solid #000;
+        }
+
+        span, strong {
+            display: inline-block;
+            /* border: .25pt solid gray; */
+        }
+
+        .section-heading {
+            font-size: 0.090in;
+            font-family: arial;
+            margin-bottom: 0.03in;
+        }
+
+        .section-body {
+            font-size: 0.115in;
+            line-height: 1.25;
+            font-family: 'Courier New';
+        }
+
+        .agreed-txt {
+            font-size: 8.3px;
+            padding: 0.03in;
+            line-height: 1.2;
+            font-family: arial;
+            text-align: justify;
+        }
+
+        .common-p {
+            padding: 0.03in;
+        }
+
+        .shipper-box {
+            width: 3.6in;
+            height: 1in;
+        }
+
+        .shipper-box .inner-r1 {
+            display: flex;
+        }
+
+        .shipper-box .inner-r1 .col-l {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .shipper-box .inner-r1 .col-r {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .shipper-box .inner-r2 {
+            width: 3.6in;
+            height: 0.48in;
+        }
+
+        .issuedby-box {
+            width: 3.8in;
+            height: 1in;
+        }
+
+        .issuedby-box .inner-r1 {
+            width: 3.8in;
+            height: 0.18in;
+        }
+
+        .issuedby-box .inner-r2 {
+            width: 3.8in;
+            height: 0.54in;
+        }
+
+        .issuer-info {
+            display: flex;
+        }
+
+        .issuer-title {
+            width: 1in;
+            height: 0.74997in;
+            padding: 0.03in;
+        }
+
+        .awb-awb {
+            font-size: 0.140in; 
+            font-family: arial;
+            padding: 0 0 0.075in 0;
+        }
+
+        .awb-awb-btm {
+            width: 3.18in;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .issuer-details {
+            width: 3.0in;
+            height: 0.74997in;
+            padding: 0.03in;
+        }
+
+        .bill-copy-info {
+            height: 0.24999in;
+            line-height: 0.18in;
+            padding: 0.03in;
+        }
+
+
+        .consignee-box {
+            width: 3.6in;
+            height: 1in;
+        }
+
+        .consignee-box .inner-r1 {
+            display: flex;
+        }
+
+        .consignee-box .inner-r1 .col-l {
+            width: 1.8in;
+            height: 0.3332in;
+            padding: 0.03in;
+        }
+
+        .consignee-box .inner-r1 .col-r {
+            width: 1.8in;
+            height: 0.3332in;
+            padding: 0.03in;
+        }
+
+        .consignee-box .inner-r2 {
+            width: 3.6in;
+            height: 0.48in;
+            padding: 0.03in;
+        }
+
+        .agreed-box {
+            width: 3.8in;
+            height: 1in;
+        }
+
+        
+
+        .carrieragent-box {
+            width: 3.6in;
+            height: 1in;
+        }
+        
+        .carrieragent-box .inner-r1 {
+            height: 0.66664in;
+            padding: 0.03in;
+        }
+
+        .carrieragent-box .inner-r2 {
+            display: flex;
+        }
+
+        .carrieragent-box .inner-r2 .col-l {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .carrieragent-box .inner-r2 .col-r {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .accountinfo-box {
+            width: 3.8in;
+            height: 0.72in;
+        }
+
+        .accountinfo-box .inner-r1{
+            padding: 0.03in;
+        }
+
+
+        .airportinfo-box {
+            width: 3.6in;
+        }
+
+        .routing-airport {
+            display: flex;
+        }
+
+        .routing-airport .byfirstcarrier {
+            width: 1.8in;
+            height: 0.33332in;
+            padding: 0.03in;
+            position: relative;
+        }
+        
+        .byfirstcarrier-title {
+            position: absolute;
+            width: 0.95in;
+            text-align: center;
+            right: 0.12in;
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            margin-top: -0.03in;
+        }
+
+        .byfirstcarrier-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .byfirstcarrier-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+
+        .routing-airport .to {
+            width: 0.4in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .routing-airport .by {
+            width: 0.3in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .destination-date {
+            display: flex;
+        }
+
+        .destination-airport {
+            width: 1.8in;
+            padding: 0.03in;
+        }
+
+        .departure-airport {
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .flight-date {
+            display: flex;
+            position: relative;
+            height: 0.33332in;
+            align-items: flex-end;
+        }
+
+        .flight-date-title {
+            position: absolute; 
+            border-bottom: 0.15pt solid #000; 
+            left: calc(25%);
+            width: 0.9in;
+            top: 0;
+            text-align: center;
+            padding: 0.02in 0 0.01in 0;
+        }
+
+        .flight-date-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .flight-date-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .flight-info {
+            width: 0.9in;
+            height: 0.205in;
+            padding: 0.03in;
+        }
+
+        .date-info {
+            width: 0.9in;
+            height: 0.205in;
+            padding: 0.03in;
+        }
+
+
+        .referenceinfo-box {
+            width: 3.8in;
+        }
+
+        .refnumber-optshipping-info {
+            display: flex;
+        }
+
+        .referece-number {
+            width: 1.4in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .optshipping-info-box {
+            width: 2.4in; 
+            position: relative; 
+            height: 0.33332in;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .optshipping-info-title {
+            display: inline-block;
+            position: absolute;
+            left: -0.1in;
+            top: -0.3pt;
+            width: 1.4in;
+            text-align: center;
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+        }
+
+        .optshipping-info-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .optshipping-info-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .optshipping-info {
+            width: 1.2in;
+            height: 0.20in;
+            padding: 0.03in 0.03in 0 0.03in;
+        }
+
+        .insurance {
+            display: flex;
+        }
+
+        .insurance-amt {
+            width: 1.1in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .insurance-txt {
+            width: 2.7in;
+            height: 0.33332in;
+            padding: 0.03in 0.050in 0.03in 0.03in;
+        }
+
+        .insurance-msg {
+            font-size: 0.085in;
+            text-align: justify;
+        }
+
+
+        .currency-carriage-customs {
+            display: flex;
+        }
+
+        .currency-chgs {
+            display: flex;
+        }
+
+        .currency-chgs .currency {
+            width: 0.4in;
+            height: 0.33332in;
+            padding: 0.01in 0.02in;
+            text-align: center;
+        }
+
+        .currency-chgs .chgs-code {
+            width: 0.2in;
+            height: 0.33332in;
+            padding: 0.03in 0;
+        }
+
+        .currency-chgs .chgs-code span {
+            font-size: 0.065in;
+            line-height: 1;
+            display: block;
+            text-align: center;
+        }
+        .currency-chgs .chgs-code span.f-mono {
+            font-size: 0.125in !important;
+        }
+
+        .currency-chgs .wt-val {
+            width: 0.4in;
+            height: 0.33332in;
+
+        }
+
+        .wt-val-title, .other-title {
+            height: 0.115in;
+            text-align: center;
+            padding: 0.018in;
+        }
+
+        .currency-chgs .other {
+            width: 0.4in;
+            height: 0.33332in;
+
+        }
+
+        .wt-val-r, .other-r {
+            display: flex;
+
+        }
+
+        .wt-val-r .ppd, .other-r .ppd, .wt-val-r .coll, .other-r .coll {
+            width: 0.2in;
+            font-size: 0.068in;
+            height: 0.218in;
+            padding: 0.03in 0;
+            text-align: center;
+        }
+
+        
+        .carriage {
+            width: 1.2in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+        .customs {
+            width: 1.2in;
+            height: 0.33332in;
+            padding: 0.03in;
+        }
+
+
+
+        .charges-table {
+            width: 2.8in;
+            /* height: 3in; */
+            height: 2.66656in;
+        }
+
+        .prepaid-weightchgs-collect {
+            height: 0.33332in;
+        }
+        
+        .valuation-chgs {
+            height: 0.33332in;
+        }
+
+        .tax {
+            height: 0.33332in;
+        }
+
+        .total-other-due-agent {
+            height: 0.33332in;
+        }
+
+        .total-other-due-carrier {
+            height: 0.33332in;
+        }
+
+        .blank-space {
+            height: 0.33332in;
+            display: flex;
+            background-color: grey;
+        }
+        .blank-space div {
+            width: 1.4in;
+        }
+        .total-prepaied-collect {
+            height: 0.33332in;
+            display: flex;
+        }
+
+        .currency-rate-cc-charge {
+            height: 0.33332in;
+            display: flex;
+        }
+        
+        .carrieruse-chgs-desti {
+            height: 0.33332in;
+            display: flex;
+        }
+
+        .carrier-use {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .carrier-use, .chgs-desti {
+            width: 1.4in;
+        }
+
+        .cc-charges {
+            width: 1.4in;
+        }
+
+        .chgs-desti {
+            width: 1.4in;
+        }
+
+        .total-prepaid {
+            width: 1.4in;
+        }
+
+        .total-collect {
+            width: 1.4in;
+        }
+
+        .currency-rate {
+            width: 1.4in;
+        }
+
+        .head-title {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .head-title span {
+            position: relative;
+            display: inline-block; 
+            width: 1.4in;
+            text-align: center; 
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            margin: 0 0.1in;
+        }
+
+        .head-title span::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .head-title span::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .val-txt {
+            display: flex;
+            justify-content: center;
+        }
+        .val-txt div {
+            height: 0.210in;
+            text-align: center;
+            flex-grow: 1;
+            padding: 0.03in;
+            width: 50%;
+        }
+
+
+
+        .other-chgs-signature-footer {
+            width: 4.6in;
+            /* height: 3in; */
+            height: 2.66656in;
+        }
+
+        .othercharges-info {
+            height: 1in;
+            padding: 0.03in;
+        }
+
+        .shipper-signature {
+            height: 1in;
+            padding: 0.03in;
+        }
+
+        .shipper-signature-title {
+            padding: 0.03in;
+            text-align: center;
+            height: 0.2in;
+            border-top: 0.15pt dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .shipper-signature-txet {
+            height: .8in;
+        }
+
+        .signature-box {
+            height: 0.5in;
+            text-align: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .date-place-sign-issuer {
+            height: 0.66664in;
+            padding: 0.03in;
+        }
+
+        .date-place-sign-box {
+            height: 0.45in;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        .total-collect-chgs {
+            width: 1.4in;
+            height: 0.33332in;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .total-collect-chgs-body {
+            display: block;
+            height: 0.20in;
+            flex-grow: 1;
+            padding: 0.03in;
+        }
+
+        .total-collect-chgs-title {
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            border-bottom: 0.15pt solid #000;
+            padding: .020in 0 0.01in 0;
+            left: calc(25%);
+            top: 0;
+        }
+
+        .total-collect-chgs-title::after {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-right: 0.15pt solid #333;
+            transform-origin: bottom left;
+            -ms-transform: skew(-30deg, 0deg);
+            -webkit-transform: skew(-30deg, 0deg);
+            transform: skew(-30deg, 0deg);
+        }
+
+        .total-collect-chgs-title::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-left: 0.15pt solid #000;
+            transform-origin: bottom left;
+            -ms-transform: skew(30deg, 0deg);
+            -webkit-transform: skew(30deg, 0deg);
+            transform: skew(30deg, 0deg);
+        }
+
+        .total-chgs-footer {
+            height: 0.33332in;
+            display: flex;
+        }
+
+
+
+
+        /* {.8in} */
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="awb-page">
+        <div class="awb-margin">
+            <div class="awb-title-box">
+                <div class="awb-no-place">
+                    <span class="awb-perfix">777</span>
+                    <span class="awb-place bdr-l">NYC</span>
+                    <span class="awb-number bdr-l">81078782</span>
+                </div>
+                <div class="awb-no">
+                    <span class="awb-no-tr">
+                        777 - 81078782
+                    </span>
+                </div>
+            </div>
+            <div class="awb-box bdr-rl">
+                <div class="main-row bdr-tb">
+                    <div class="shipper-box bdr-r">
+                        <div class="inner-r1">
+                            <div class="col-l">
+                                <span class="section-heading">Shipper's Name and Address</span>
+                            </div>
+                            <div class="col-r bdr-bl">
+                                <span class="section-heading">Shipper's Account Number</span><br/>
+                                <span class="section-body">ABC-454554 12</span>
+                            </div>
+                        </div>
+                        <div class="inner-r2 common-p">
+                            <span class="section-body">
+                                CABLE AND STEEL COMPANY
+                                1234, INDUSTRIAL STREET
+                                NEW YORK, USA
+                                PHONE 555 55 55
+                            </span>
+                        </div>
+                    </div>
+                    <div class="issuedby-box">
+                        <div class="issuer-info bdr-b">
+                            <div class="issuer-title">
+                                <span class="section-heading">Not Negotiable</span><br/>
+                                <strong class="awb-awb">Air Waybill</strong><br/>
+                                <span class="section-heading">Issued by</span>
+                            </div>
+                            <div class="issuer-details">
+                                <span class="section-body">
+                                    AMERICAN AIRLINES CARGO
+                                    P.O. BOX 619616
+                                    D/FW AIRPORT, TEXAS
+                                    U.S.A.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bill-copy-info">
+                            <span class="section-heading">Copies 1, 2 and 3 of this Air Waybill are originals and have the same validity.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-row bdr-b">
+                    <div class="consignee-box bdr-r">
+                        <div class="inner-r1">
+                            <div class="col-l">
+                                <span class="section-heading">Consignee's Name and Address</span>
+                            </div>
+                            <div class="col-r bdr-bl">
+                                <span class="section-heading">Consignee's Account Number</span><br/>
+                                <span class="section-body">ABC-454554 12</span>
+                            </div>
+                        </div>
+                        <div class="inner-r2 common-p">
+                            <span class="section-body">
+                                CABLE BIG STOREaa
+                                4321, ROGERS STREET
+                                LONDON, ENGLAND
+                                PHONE: 555 12 34
+                            </span>
+                        </div>
+                    </div>
+                    <div class="agreed-box">
+                        <span class="agreed-txt">
+                            It is agreed that the goods described herein are accepted in apparent good order and condition
+                            (except as noted) for carriage SUBJECT TO THE CONDITIONS OF CONTRACT ON THE
+                            REVERSE HEREOF. ALL GOODS MAY BE CARRIED BY ANY OTHER MEANS INCLUDING
+                            ROAD OR ANY OTHER CARRIER UNLESS SPECIFIC CONTRARY INSTRUCTIONS ARE
+                            GIVEN HEREON BY THE SHIPPER, AND SHIPPER AGREES THAT THE SHIPMENT MAY
+                            BE CARRIED VIA INTERMEDIATE STOPPING PLACES WHICH THE CARRIER DEEMS
+                            APPROPRIATE. THE SHIPPER'S ATTENTION IS DRAWN TO THE NOTICE CONCERNING
+                            CARRIER'S LIMITATION OF LIABILITY. Shipper may increase such limitation of liability by
+                            declaring a higher value for carriage and paying a supplemental charge if required.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="main-row">
+                    <div class="carrieragent-box bdr-r">
+                        <div class="inner-r1">
+                            <span class="section-heading">Issuing Carrier's Agent Name and City</span>
+                        </div>
+                        <div class="inner-r2 bdr-t">
+                            <div class="col-l bdr-r">
+                                <span class="section-heading">Agent's IATA Code</span><br/>
+                                <span class="section-body">11-2 0000</span>
+                            </div>
+                            <div class="col-r">
+                                <span class="section-heading">Account No.</span><br/>
+                                <span class="section-body">ABC-454554 12</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accountinfo-box">
+                        <div class="inner-r1">
+                            <span class="section-heading">Accounting Information</span><br/>
+                            <span class="section-body">freight prepaid</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-row bdr-t">
+                    <div class="airportinfo-box bdr-r">
+                        <div class="inner-r1 departure-airport bdr-b">
+                            <span class="section-heading">Airport of Departure (Addr. of First Carrier) and Requested Routing</span>                        
+                        </div>
+                        <div class="inner-r2 routing-destination bdr-b">
+                            <div class="routing-airport">
+                                <div class="to">
+                                    <span class="section-heading">To</span><br/>
+                                    <span class="section-body">LHR</span>
+                                </div>
+                                <div class="byfirstcarrier bdr-rl">
+                                    <span class="byfirstcarrier-title">Routing and Destination</span>
+                                    <span class="section-heading">By First Carrier</span><br/>
+                                    <span class="section-body">AA</span>
+                                </div>
+                                <div class="to bdr-r">
+                                    <span class="section-heading">to</span><br/>
+                                    <span class="section-body"></span>
+                                </div>
+                                <div class="by">
+                                    <span class="section-heading">by</span><br/>
+                                    <span class="section-body"></span>
+                                </div>
+                                <div class="to bdr-rl">
+                                    <span class="section-heading">to</span><br/>
+                                    <span class="section-body"></span>
+                                </div>
+                                <div class="by">
+                                    <span class="section-heading">by</span><br/>
+                                    <span class="section-body"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner-r3 destination-date">
+                            <div class="destination-airport">
+                                <span class="section-heading">Airport of Destination</span><br/>
+                                <span class="section-body">HEATHROW</span>
+                            </div>
+                            <div class="flight-date bdr-l">
+                                <div class="flight-date-title">
+                                    Requested Flight/Date
+                                </div>
+                                <div class="flight-info bdr-r">
+                                    <span class="section-body">AA1234/12</span>
+                                </div>
+                                <div class="date-info">
+                                    <span class="section-body">12/12/2012</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="referenceinfo-box">
+                        <div class="inner-r1 refnumber-optshipping-info">
+                            <div class="referece-number bdr-b">
+                                <span class="section-heading">Reference Number</span>
+                            </div>
+                            <div class="optshipping-info-box">
+                                <span class="optshipping-info-title">
+                                    Optional Shipping Information
+                                </span>
+                                <div class="optshipping-info bdr-b bdr-l">
+                                    <span class="section-body">1</span>
+                                </div>
+                                <div class="optshipping-info bdr-b bdr-l">
+                                    <span class="section-body">2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner-r2 currency-carriage-customs bdr-b">
+                            <div class="currency-chgs">
+                                <div class="currency bdr-r">
+                                    <span class="section-heading">Currency</span>
+                                    <span class="section-body">AED</span>
+                                </div>
+                                <div class="chgs-code">
+                                    <span>CHGS Code</span>
+                                    <span class="m-top f-mono">PP</span>
+                                </div>
+                                <div class="wt-val bdr-rl">
+                                    <div class="wt-val-title bdr-b">
+                                        <span>WT/VAL</span>
+                                    </div>
+                                    <div class="wt-val-r">
+                                        <div class="ppd bdr-r">
+                                            <span>PPD</span>
+                                            <span class="m-top f-mono">XX</span>
+                                        </div>
+                                        <div class="coll">
+                                            <span>COLL</span>
+                                            <span class="m-top f-mono"> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                    <div class="other-title bdr-b">
+                                        Other
+                                    </div>
+                                    <div class="other-r">
+                                        <div class="ppd bdr-r">
+                                            <span>PPD</span>
+                                            <span class="m-top f-mono">XX</span>
+                                        </div>
+                                        <div class="coll">
+                                            <span>COLL</span>
+                                            <span class="m-top f-mono"> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carriage bdr-l ta-c">
+                                Declared Value for Carriage
+                            </div>
+                            <div class="customs bdr-l ta-c">
+                                Declared Value for Customs
+                            </div>
+                        </div>
+                        <div class="inner-r3 insurance">
+                            <div class="insurance-amt">
+                                <span class="section-heading">Amount of Insurance</span>
+                                <span class="section-body"></span>
+                            </div>
+                            <div class="insurance-txt bdr-l">
+                                <span class="insurance-msg">
+                                    INSURANCE - 
+                                    If carrier offers insurance, and such insurance is requested in accordance with the conditions thereof, indicate amount to be insured in figures in box marked "Amount of Insurance".
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-row-b bdr-t">
+                    <div class="handlinginfo-box">
+                        <div class="handlinginfo">
+                            <span class="section-heading">Handling Information</span>
+                        </div>
+                        <div class="handlinginfo-text">
+                            <div class="box-1">
+                                <span class="section-body">
+                                    pef PLS INF CNEE IMMD ON ARR OF CGO<br/>
+                                    MARKS N NO:
+                                </span>
+                                <span class="insurance-msg">
+                                    These commodities, technology or software were exported from the United States
+                                    in accordance with the Export Administration Regulations. Ultimate Destination
+                                </span>
+                            </div>
+                            <div class="sci bdr-tl">
+                                <span class="section-heading">SCI</span><br/>
+                                <span class="section-body">T1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="main-row-b bdr-t">
+                    <div class="commodity-goods-info-table">
+                        <div class="Pieces-RCP">
+                            <div class="cgitbl-row">
+                                No. of
+                                Pieces
+                                RCP
+                            </div>
+                            <div class="bdr-t bdr-b cgitbl-body-1 ta-r">
+                                <span class="section-body">4545</span>
+                            </div>
+                            <div class="cgitbl-row ta-r">
+                                <span class="section-body">45</span>
+                            </div>
+                        </div>
+                        <div class="gross-wgt bdr-l">
+                            <div class="cgitbl-row">
+                                Gross Weight
+                            </div>
+                            <div class="bdr-t bdr-b cgitbl-body-1 ta-r">
+                                <span class="section-body">454</span>
+                            </div>
+                            <div class="cgitbl-row ta-r">
+                                <span class="section-body">454</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="kg-lb">
+                            <div class="cgitbl-row">
+                                <span>Kg</span><span>Lb</span>
+                            </div>
+                            <div class="bdr-t cgitbl-body">
+                                <span class="section-body">K</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="rate-class bdr-l">
+                            <div class="cgitbl-row">
+                            </div>
+                            <div class="cgitbl-body">
+                                <span class="section-body">M</span>
+                            </div>
+                        </div>
+                        <div class="commodity-itemno">
+                            <div class="cgitbl-row-1">
+                                <div class="rt-cls">Rate Class</div>
+                                <div class="comm-itm bdr-l bdr-t">Commodity Item No.</div>
+                            </div>
+                            <div class="bdr-t bdr-l cgitbl-body ta-r">
+                                <span class="section-body">54</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="chargeable-wgt bdr-l">
+                            <div class="cgitbl-row">
+                                Chargeable<br/>
+                                Weight
+                            </div>
+                            <div class="bdr-t cgitbl-body ta-r">
+                                <span class="section-body">545</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="rate-per-charge bdr-l">
+                            <div class="cgitbl-row">
+                                Rate / Charge
+                            </div>
+                            <div class="bdr-t cgitbl-body ta-r">
+                                <span class="section-body">154.25</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="total bdr-l">
+                            <div class="cgitbl-row">
+                                Total
+                            </div>
+                            <div class="bdr-t bdr-b cgitbl-body-1">
+                            </div>
+                            <div class="cgitbl-row ta-r">
+                                <span class="section-body">45454.05</span>
+                            </div>
+                        </div>
+                        <div class="grey-gap bdr-l"></div>
+                        <div class="nature-qty-goods bdr-l">
+                            <div class="cgitbl-row">
+                                <span class="section-heading">Nature and Quantity of Goods<br/>
+                                (incl. Dimensions or Volume)</span>
+                            </div>
+                            <div class="bdr-t cgitbl-body-2">
+                                <span class="section-body">FRESH ORCHID CUT FLOWERS</span>,
+                                <span class="section-body">FRESH ORCHID CUT FLOWERS</span>,
+                                <span class="section-body">FRESH ORCHID CUT FLOWERS</span>,
+                                <br/><br/>
+                                <span class="section-body">DIMS.: In CM 2 = 36 X 40 X 74</span>,
+                                <span class="section-body">1 = 36 X 30 X 74</span>,
+                                <span class="section-body">4 = 36 X 8 X 74</span>,
+                                <span class="section-body">4 = 40 X 14 X 70</span>,
+                                <span class="section-body">* Remaining Dimensions</span>,
+                                <span class="section-body">13 = 40 X 28 X 70 , 1 = 30 X 10 X 50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-row bdr-t">
+                    <div class="charges-table bdr-b">
+                        <div class="prepaid-weightchgs-collect bdr-b">
+                            <div class="head-title">
+                                <span>Prepaid</span><span>Weight Charge</span><span>Collect</span>
+                            </div>
+                            <div class="val-txt">
+                                <div class="bdr-r"><span class="section-body">1242.09</span></div>
+                                <div><span class="section-body">1242.09</span></div>
+                            </div>                  
+                        </div>
+                        <div class="valuation-chgs bdr-b">
+                            <div class="head-title">
+                                <span>Valuation Charge</span>
+                            </div>
+                            <div class="val-txt">
+                                <div class="bdr-r"><span class="section-body">142.09</span></div>
+                                <div><span class="section-body">1242.09</span></div>
+                            </div>
+                        </div>
+                        <div class="tax bdr-b">
+                            <div class="head-title">
+                                <span>Tax</span>
+                            </div>
+                            <div class="val-txt">
+                                <div class="bdr-r"><span class="section-body">142.09</span></div>
+                                <div><span class="section-body">1242.09</span></div>
+                            </div>
+                        </div>
+                        <div class="total-other-due-agent bdr-b">
+                            <div class="head-title">
+                                <span>Total Other Charges Due Agent</span>
+                            </div>
+                            <div class="val-txt">
+                                <div class="bdr-r"><span class="section-body">142.09</span></div>
+                                <div><span class="section-body">1242.09</span></div>
+                            </div>
+                        </div>
+                        <div class="total-other-due-carrier bdr-b">
+                            <div class="head-title">
+                                <span>Total Other Charges Due Carrier</span>
+                            </div>
+                            <div class="val-txt">
+                                <div class="bdr-r"><span class="section-body">142.09</span></div>
+                                <div><span class="section-body">1242.09</span></div>
+                            </div>
+                        </div>
+                        <div class="blank-space bdr-b">
+                            <div class="bdr-r">&nbsp;</div>
+                            <div>&nbsp;</div>
+                        </div>
+                        <div class="total-prepaied-collect bdr-b">
+                            <div class="total-prepaid bdr-r">
+                                <div class="head-title">
+                                    <span>Total Prepaid</span>
+                                </div>
+                                <div class="val-txt">
+                                    <div><span class="section-body">1242.09</span></div>                                
+                                </div>
+                            </div>
+                            <div class="total-collect">
+                                <div class="head-title">
+                                    <span>Total Collect</span>
+                                </div>
+                                <div class="val-txt">
+                                    <div><span class="section-body">1242.09</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="currency-rate-cc-charge bdr-b">
+                            <div class="currency-rate bdr-r">
+                                <div class="head-title">
+                                    <span>Currency Conversion Rates</span>
+                                </div>
+                                <div class="val-txt">
+                                    <div><span class="section-body">1242.09</span></div>
+                                </div>
+                            </div>
+                            <div class="cc-charges">
+                                <div class="head-title f-8">
+                                    <span>CC Charges in Dest. Currency</span>
+                                </div>
+                                <div class="val-txt">
+                                    <div><span class="section-body">1242.09</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="other-chgs-signature-footer bdr-l">
+                        <div class="othercharges-info bdr-b">
+                            <span class="section-heading">Other Charges</span><br/>
+                            <span class="section-body">
+                                AWA : 500.00, MXC: 8304.00, MYC: 31140.00
+                            </span>
+                        </div>
+                        <div class="shipper-signature bdr-b">
+                            <div class="shipper-signature-txet">
+                                <span class="insurance-msg">Shipper certifies that the particulars on the face hereof are correct and that insofar as any part of the consignment
+        contains dangerous goods, such part is properly described by name and is in proper condition for carriage by air
+        according to the applicable Dangerous Goods Regulations.</span>
+                                <div class="signature-box">
+                                    <span class="section-body">
+                                        tiffa shipper
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="shipper-signature-title">
+                                <span class="section-heading">Signature of Shipper or his Agent</span>
+                            </div>
+                        </div>
+                        <div class="date-place-sign-issuer bdr-b">
+                            <div class="date-place-sign-box">
+                                <span class="section-body">07 Feb 2018</span>
+                                <span class="section-body">BANGKOK</span>
+                                <span class="section-body">TIFFA ORGANIZATION</span>
+                            </div>
+                            <div class="shipper-signature-title">
+                                <span class="section-heading">Executed on (date)</span>
+                                <span class="section-heading">at (place)</span>
+                                <span class="section-heading">Signature of Issuing Carrier or its Agent</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="main-row bdr-l" style="margin: auto">
+                <div class="carrieruse-chgs-desti bdr-b">
+                    <div class="carrier-use bdr-r">
+                        <span class="section-heading">For Carrier's Use only at Destination</span>
+                    </div>
+                    <div class="chgs-desti">
+                        <div class="head-title">
+                            <span>Charges at Destination</span>
+                        </div>
+                        <div class="val-txt">
+                            <div><span class="section-body">1242.09</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="total-chgs-footer">
+                    <div class="total-collect-chgs bdr-r bdr-l bdr-b">
+                        <span class="total-collect-chgs-title">Total Collect Charges</span><br/>
+                        <span class="total-collect-chgs-body section-body">452.12</span>
+                    </div>
+                    <div class="awb-awb-btm">
+                        <span class="awb-no-tr">777 - 81078782</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
